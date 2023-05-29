@@ -10,6 +10,12 @@
     <form action="save" method="post" th:object="${user}">
         <table border="0" cellpadding="5">
             <tr>
+                <td>Password:</td>
+                <td><label>
+                    <input type="text" th:field="*{password}"/>
+                </label></td>
+            </tr>
+            <tr>
                 <td>Name:</td>
                 <td><label>
                     <input type="text" th:field="*{name}"/>
@@ -18,11 +24,11 @@
             <tr>
                 <td>Last Name:</td>
                 <td><label>
-                    <input type="text" th:field="*{last_name}"/>
+                    <input type="text" th:field="*{lastName}"/>
                 </label></td>
             </tr>
             <tr>
-                <td>Email:</td>
+                <td>Email (Username):</td>
                 <td><label>
                     <input type="text" th:field="*{email}"/>
                 </label></td>
@@ -33,11 +39,27 @@
                     <input type="text" th:field="*{age}"/>
                 </label></td>
             </tr>
+            <label for="role_id">Role</label>
+            <select name="role" id="role_id" multiple="multiple">
+                <option value="ROLE_USER">USER</option>
+                <option value="ROLE_ADMIN">ADMIN</option>
+            </select>
             <tr>
-                <td colspan="2"><input type="submit" value="Save"></td>
+                <td colspan="2"><input type="submit" value="save"></td>
+            </tr>
+            <tr>
+                <form action="#" th:action="@{/admin}" method="get">
+                    <input type="submit" value="Back"/>
+                </form>
             </tr>
         </table>
     </form>
 </div>
 </body>
 </html>
+
+private String password;
+private String name;
+private String lastName;
+private String email;
+private Integer age;

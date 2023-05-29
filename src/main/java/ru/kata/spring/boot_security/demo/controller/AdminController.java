@@ -22,7 +22,7 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    @PostMapping("/new")
+    @PostMapping("/new_user")
     public String createUser(@ModelAttribute("emptyUser") User user,
                              @RequestParam(value = "checkedRoles") String[] selectResult) {
         for (String s : selectResult) {
@@ -35,7 +35,7 @@ public class AdminController {
     @PostMapping("/save")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @GetMapping
@@ -48,7 +48,7 @@ public class AdminController {
         model.addAttribute("allUsers", allUsers);
         model.addAttribute("allPossibleRoles", allRoles);
         model.addAttribute("emptyUser", new User());
-        return "admin";
+        return "/admin";
     }
 
     @GetMapping("/edit/{id}")

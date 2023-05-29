@@ -18,12 +18,16 @@
         <tr th:object="${user}">
             <td th:text="${user.id}"></td>
             <td th:text="${user.name}"></td>
-            <td th:text="${user.last_name}"></td>
+            <td th:text="${user.lastName}"></td>
             <td th:text="${user.email}"></td>
             <td th:text="${user.age}"></td>
         </tr>
 
     </table>
+
+    <form  action="#"  th:action="@{/logout}" method="get">
+        <input type="submit" value="Logout"/>
+    </form>
 
 </div>
 </body>
