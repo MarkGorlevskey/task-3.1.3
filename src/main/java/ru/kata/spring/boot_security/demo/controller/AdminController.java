@@ -22,14 +22,9 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    @PostMapping("/new_user")
-    public String createUser(@ModelAttribute("emptyUser") User user,
-                             @RequestParam(value = "checkedRoles") String[] selectResult) {
-        for (String s : selectResult) {
-            user.addRole(roleService.getRoleByName("ROLE_" + s));
-        }
-        userService.saveUser(user);
-        return "redirect:/admin";
+    @GetMapping("/new")
+    public String newUser(@ModelAttribute("user") User user) {
+        return "new_user";
     }
 
     @PostMapping("/save")

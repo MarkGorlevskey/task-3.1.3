@@ -1,65 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>New User</title>
+    <style>
+        *{
+            font-size: 15px;
+        }
+    </style>
+
 </head>
 <body>
-<div align="center">
-    <h2>New User</h2>
-    <form action="save" method="post" th:object="${user}">
-        <table border="0" cellpadding="5">
-            <tr>
-                <td>Password:</td>
-                <td><label>
-                    <input type="text" th:field="*{password}"/>
-                </label></td>
-            </tr>
-            <tr>
-                <td>Name:</td>
-                <td><label>
-                    <input type="text" th:field="*{name}"/>
-                </label></td>
-            </tr>
-            <tr>
-                <td>Last Name:</td>
-                <td><label>
-                    <input type="text" th:field="*{lastName}"/>
-                </label></td>
-            </tr>
-            <tr>
-                <td>Email (Username):</td>
-                <td><label>
-                    <input type="text" th:field="*{email}"/>
-                </label></td>
-            </tr>
-            <tr>
-                <td>Age:</td>
-                <td><label>
-                    <input type="text" th:field="*{age}"/>
-                </label></td>
-            </tr>
-            <label for="role_id">Role</label>
-            <select name="role" id="role_id" multiple="multiple">
-                <option value="ROLE_USER">USER</option>
-                <option value="ROLE_ADMIN">ADMIN</option>
-            </select>
-            <tr>
-                <td colspan="2"><input type="submit" value="save"></td>
-            </tr>
-            <tr>
-                <form action="#" th:action="@{/admin}" method="get">
-                    <input type="submit" value="Back"/>
-                </form>
-            </tr>
-        </table>
-    </form>
-</div>
+<h2>Add New User </h2>
+<br>
+<form th:method="POST" th:action="@{/logout}">
+    <input type="submit" value="logout"/>
+</form>
+<form th:method = "POST" th:action = "@{/admin/}" th:object = "${user}">
+    <label for="name">Name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <label for="name">lastName: </label>
+    <input type="text" th:field="*{lastName}" id="surname"/>
+    <br/>
+    <label for="name">Age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <br/>
+    <label for="name">Email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <br/>
+    <label for="name">Password: </label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <br/>
+    <input type="checkbox" name="checkbox">
+    <label for="name">Admin </label>
+    <br/>
+    <input type="submit" value="Add New User"/>
+</form>
+
+
 </body>
 </html>
-
-private String password;
-private String name;
-private String lastName;
-private String email;
-private Integer age;
