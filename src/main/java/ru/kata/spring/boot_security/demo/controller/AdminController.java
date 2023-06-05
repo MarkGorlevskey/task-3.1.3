@@ -22,12 +22,12 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    @GetMapping("/new")
+    @GetMapping("/admin/new")
     public String newUser(@ModelAttribute("user") User user) {
-        return "new_user";
+        return "/new_user";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/admin/save")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/admin";
@@ -46,7 +46,7 @@ public class AdminController {
         return "/admin";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/admin/edit/{id}")
     public String updateUser(@ModelAttribute User user, @PathVariable("id") Long id,
                              @RequestParam(value = "userRolesSelector")
                              String[] selectResult) {
@@ -57,7 +57,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/admin/delete/{id}")
     public String deleteUserSubmit(@PathVariable Long id) {
         userService.deleteUser(id);
         return "redirect:/admin";
